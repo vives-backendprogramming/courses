@@ -65,6 +65,10 @@ public class Course {
         this.theory = theory;
     }
 
+    public List<Lector> getLectors() {
+        return lectors;
+    }
+
     @Override
     public String toString() {
         return "Course{" +

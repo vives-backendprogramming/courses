@@ -28,11 +28,11 @@ public class CommandLineRunnerAtStartup implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Study ti = studyRepository.save(new Study("Toegepaste Informatica", new Lector("Martin", "Lippert", LocalDate.now(), Gender.M)));
+        Study ti = studyRepository.save(new Study("Toegepaste Informatica", new Lector("Martin", "Lippert", LocalDate.now().minusMonths(4).minusYears(35).minusDays(4), Gender.M)));
 
-        Lector pieter = lectorRepository.save(new Lector("Pieter", "Humphrey", LocalDate.now(), Gender.M));
-        Lector josh = lectorRepository.save(new Lector("Josh", "Long", LocalDate.now(), Gender.M));
-        Lector ria = lectorRepository.save(new Lector("Ria", "Stein", LocalDate.now(), Gender.V));
+        Lector pieter = lectorRepository.save(new Lector("Pieter", "Humphrey", LocalDate.now().minusMonths(3).minusYears(27).minusDays(13), Gender.M));
+        Lector josh = lectorRepository.save(new Lector("Josh", "Long", LocalDate.now().minusMonths(9).minusYears(27).minusDays(27), Gender.M));
+        Lector ria = lectorRepository.save(new Lector("Ria", "Stein", LocalDate.now().minusMonths(1).minusYears(30).minusDays(3), Gender.V));
 
         courseRepository.save(new Course("Backend Programming", 3, false));
         courseRepository.save(new Course("iOS", 3, false));
@@ -56,9 +56,6 @@ public class CommandLineRunnerAtStartup implements CommandLineRunner {
         lectorRepository.save(ria);
         lectorRepository.save(josh);
 
-        pieter.addCourse(sql);
-        lectorRepository.save(pieter);
-
         courseRepository.save(iOS.get());
         courseRepository.save(android.get());
         courseRepository.save(backend.get());
@@ -72,7 +69,5 @@ public class CommandLineRunnerAtStartup implements CommandLineRunner {
 
         studyRepository.save(ti);
 
-        pieter.setGsmNumber("0499523651");
-        lectorRepository.save(pieter);
     }
 }

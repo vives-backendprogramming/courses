@@ -64,6 +64,11 @@ public class Course {
     public void setTheory(Boolean theory) {
         this.theory = theory;
     }
+    
+    public List<Lector> getLectors() {
+        return lectors;
+    }
+
 
     @Override
     public String toString() {

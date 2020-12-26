@@ -29,6 +29,9 @@ public class Lector {
     @Column(name = "url_photo")
     private String url;
 
+    @OneToOne(mappedBy = "headOfStudy")
+    private Study study;
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "lecturer_courses",
@@ -106,11 +109,19 @@ public class Lector {
         return courses;
     }
 
-
-    public void addCourse(Course course){
-        this.courses.add(course);
+    public Study getStudy() {
+        return study;
     }
 
+    public void addCourse(Course course) {
+        this.getCourses().add(course);
+        //course.getLectors().add(this);
+    }
+
+    public void removeCourse(Course course) {
+        this.getCourses().remove(course);
+        //course.getLectors().remove(this);
+    }
 
     @Override
     public String toString() {
